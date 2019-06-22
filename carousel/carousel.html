@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Carousel</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .window {
+      width: 300px;
+      overflow: hidden;
+    }
+    .images {
+      display: flex;
+      align-items: flex-start;
+      transition: all 0.5s;
+    }
+    .red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="window">
+    <div id="images" class="images">
+      <img src="http://img4.imgtn.bdimg.com/it/u=1885104508,2631057472&fm=15&gp=0.jpg" alt="图1" width=300 height=200>
+      <img src="http://img4.imgtn.bdimg.com/it/u=1882962414,2853686138&fm=15&gp=0.jpg" alt="图2" width=300  height=200>
+      <img src="http://img4.imgtn.bdimg.com/it/u=3527388942,3089393552&fm=26&gp=0.jpg" alt="图3" width=300  height=200>
+      <img src="http://img1.imgtn.bdimg.com/it/u=3389365117,2034815782&fm=15&gp=0.jpg" alt="图4" width=300  height=200>
+    </div>
+  </div>
+
+  <span id="buttons">
+    <span>第1张</span>
+    <span>第2张</span>
+    <span>第3张</span>
+    <span>第4张</span>
+  </span>
+
+
+  <script>
+    var n = 0;
+    var allBottons = $("#buttons span");
+    var size = allBottons.length;
+
+    for (let i  = 0; i < allBottons.length; i++) {
+      $(allBottons[i]).on("click", function(event) {
+        let n = $(event.currentTarget).index();
+        $("#images").css({
+          "transform": "translateX(" + (n * -300) + "px)"
+        });
+        $(allBottons[i]).addClass("red")
+        .siblings(".red").removeClass("red");
+      })
+    };
+
+    let timerId = setTimer();
+
+    function setTimer() {
+        return setInterval(() => {
+          n =(n + 1)% 4;
+          console.log(n);
+          allBottons.eq(n).trigger("click")
+          .addClass("red")
+          .siblings(".red").removeClass("red")
+        }, 1000);
+      }
+    $(".window").on("mouseenter", () => {
+      window.clearInterval(timerId);
+    });
+    $(".window").on("mouseleave", () => {
+      timerId = setTimer();
+    })
+
+
+
+  </script>
+</body>
+</html>
