@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Carousel</title>
+  <link rel="stylesheet" href="slides.css">
+  <style>
+  </style>
+</head>
+<body>
+  <div class="window">
+    <div id="images" class="images">
+      <img src="http://img4.imgtn.bdimg.com/it/u=1885104508,2631057472&fm=15&gp=0.jpg" alt="图1" width=600 height=400>
+      <img src="http://img4.imgtn.bdimg.com/it/u=1882962414,2853686138&fm=15&gp=0.jpg" alt="图2" width=600  height=400>
+      <img src="http://img4.imgtn.bdimg.com/it/u=3527388942,3089393552&fm=26&gp=0.jpg" alt="图3" width=600  height=400>
+      <img src="http://img1.imgtn.bdimg.com/it/u=3389365117,2034815782&fm=15&gp=0.jpg" alt="图4" width=600  height=400>
+    </div>
+  </div>
+
+  <script>
+    var n = 0, $images = $(".images img");
+    init();
+
+    setInterval(()=> {
+      makeLeave($images.eq(n)).one("transitionend", event=> {
+        makeEnter($(event.currentTarget));
+      });
+      n = (n + 1) % ($images.length);
+      makeCurrent($images.eq(n));
+    }, 3000);
+
+    // 函数
+
+    function init() {
+      $images.eq(0).addClass("current").siblings().addClass("enter");
+    }
+
+    function makeLeave($node) {
+      return $node.removeClass("current").addClass("leave");
+    };
+    function makeEnter($node) {
+      return $node.removeClass("leave").addClass("enter");
+    }
+    function makeCurrent($node) {
+      return $node.removeClass("enter").addClass("current");
+    }
+
+  </script>
+
+</body>
+</html>
