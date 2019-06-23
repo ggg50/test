@@ -22,17 +22,14 @@
 
 .window .images .enter {
   transform: translateX(100%);
-  border: 2px solid green;
 }
 
 .window .images .current {
   transform: translateX(0);
-  border: 2px solid red;
   z-index: 1;
 }
 
 .window .images .leave {
   transform: translateX(-100%);
-  border: 2px solid blue;
   z-index: 1;
 }
