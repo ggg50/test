@@ -19,25 +19,12 @@ header h2 { position: absolute; font-family: "Myriad Pro",Arial,Helvetica,sans-s
 
 main .menu { position: relative; height: 45px; width: 100%; display: flex; justify-content: center;background: linear-gradient(#ffffff, #ececec); overflow: hidden;}
 
-main .menu button {width:60px; display:inline-block; height: 45px; overflow:hidden;
- box-shadow: inset -1px 0 #fefefe, inset -2px 0 #dddddd;background: transparent;
- z-index: 1;
- position:relative;
-}
+main .menu button {width:60px; display:inline-block; height: 45px; overflow:hidden; box-shadow: inset -1px 0 #fefefe, inset -2px 0 #dddddd; background: transparent; z-index: 1; position:relative; }
 main .menu button.fbar {width: 2px;}
 main .menu button.menuItem.active {background: radial-gradient(farthest-corner,#f0f0f0, #bbbbbb);}
 main .menu button.menuItem.inactive:hover {box-shadow: inset -1px 0 #fefefe, inset -2px 0 #dddddd;background: rgba(245, 245, 245, 0.5);}
 
-main .menu button.menuItem.active::after {
-  content: "";
-  position:absolute;
-  left:50%;
-  transform: translateX(-50%);
-  top: -2px;
-  border: 7px solid transparent;
-  border-top-color: #ffffff;
-  z-index: 2999;
-}
+main .menu button.menuItem.active::after { content: ""; position:absolute; left:50%; transform: translateX(-50%); top: -2px; border: 7px solid transparent; border-top-color: #ffffff; z-index: 2;}
 
 footer p { padding:10px; text-align:center;}
 
