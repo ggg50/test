@@ -21,6 +21,6 @@ function slidesMove(e, keepScroll) {
   $(slides).css({
     transform: `translateX(${positions[$menuButtons.index(e.currentTarget)]}px)`
   });
-  $(e.currentTarget).addClass("active").siblings().removeClass("active");
+  $(e.currentTarget).removeClass("inactive").addClass("active").siblings().removeClass("active").addClass("inactive");
   if(!keepScroll) window.clearInterval(timer);
 }

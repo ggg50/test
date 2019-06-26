@@ -1,117 +1,28 @@
-* {
-  padding: 0; margin: 0; box-sizing: border-box;
+* {padding: 0; margin: 0; box-sizing: border-box;}
+body{ color:#444444; font-size:13px; background: #f2f2f2; font-family:Arial, Helvetica, sans-serif;}
+a, a:visited { color:#0196e3; text-decoration:none; outline:none;}
+button {border: none;}
+button:focus { outline: none;}
+
+
+header { display: block; width: 920px; margin:45px auto 20px auto; position: relative; text-align: center; color: #444444;}
+header h1 { font-family: "Myriad Pro",Arial,Helvetica,sans-serif; font-size: 36px; font-weight: normal; margin:15px auto;}
+header h2 { position: absolute; font-family: "Myriad Pro",Arial,Helvetica,sans-serif; font-size: 12px; font-weight: normal; right: 0; text-transform: uppercase; top: 15px;}
+
+
+#gallery {width: 920px;overflow:hidden;margin:0 auto;box-shadow:0 0 3px #AAAAAA;border-radius: 0 0 4px 4px;border:1px solid white;background:url(img/panel.jpg) repeat-x bottom center #ffffff; }
+
+#slides { width:920px; height:400px; display: flex; align-items: flex-start; transform: translateX(0); transition: all 1s; }
+
+main .menu { height: 45px; width: 100%; display: flex; justify-content: center;}
+main .menu button { background:url(img/divider.png) no-repeat right; width:60px; display:inline-block; height: 45px; overflow:hidden;}
+main .menu button.fbar {width: 2px;}
+main .menu button.active {background: url(img/active_bg.png) no-repeat;}
+main .menu button.inactive:hover {
+  background:url(img/divider.png) no-repeat right, url(img/pic_bg.png) repeat;
 }
 
+footer p { padding:10px; text-align:center;}
 
-body{
-	/* Setting default text color, background and a font stack */
-	color:#444444;
-	font-size:13px;
-	background: #f2f2f2;
-	font-family:Arial, Helvetica, sans-serif;
-}
-
-a {
-  color: #0196e3;
-  text-decoration: none;
-}
-
-button:focus {
-  outline: none;
-}
-
-
-header {
-  display: block;
-  width: 920px;
-  margin-top: 60px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  text-align: center;
-  color: #444444;
-}
-
-h1 {
-  font-family: "Myriad Pro",Arial,Helvetica,sans-serif;
-  font-size: 36px;
-  font-weight: normal;
-  margin:15px auto;
-}
-
-h2 {
-  position: absolute;
-  font-family: "Myriad Pro",Arial,Helvetica,sans-serif;
-  font-size: 12px;
-  font-weight: normal;
-  right: 0;
-  text-transform: uppercase;
-  top: 15px;
-}
-
-
-#gallery {
-  width: 920px;
-  overflow:hidden;
-  margin:0 auto;
-  box-shadow:0 0 3px #AAAAAA;
-  border-radius: 0 0 4px 4px;
-  border:1px solid white;
-	background:url(img/panel.jpg) repeat-x bottom center #ffffff;
-}
-
-#slides {
-  width:920px;
-  height:400px;
-  display: flex;
-  align-items: flex-start;
-  transform: translateX(0);
-  transition: all 0.5s;
-}
-
-button {
-  border:none;
-}
-
-button:hover {
-  background:url(img/pic_bg.png) repeat;
-}
-
-main .menu {
-  height: 45px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-main .menu button {
-  background:url(img/divider.png) no-repeat right;
-  width:60px;
-	display:inline-block;
-  height: 45px;
-  overflow:hidden;
-}
-main .menu button.fbar {
-  width: 2px;
-}
-
-
-main .menu button.active {
-  background: url(img/active_bg.png) no-repeat;
-}
-
-
-
-
-footer p {
-  padding:10px;
-  text-align:center;
-}
-
-footer p:first-child {
-  margin-top: 16px;
-  font-size: 13px;
-}
-footer p:last-child {
-  font-size: 10px;
-}
+footer p:first-child { margin-top: 16px; font-size: 13px;}
+footer p:last-child { font-size: 10px;}
