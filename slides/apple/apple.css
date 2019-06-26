@@ -10,16 +10,33 @@ header h1 { font-family: "Myriad Pro",Arial,Helvetica,sans-serif; font-size: 36p
 header h2 { position: absolute; font-family: "Myriad Pro",Arial,Helvetica,sans-serif; font-size: 12px; font-weight: normal; right: 0; text-transform: uppercase; top: 15px;}
 
 
-#gallery {width: 920px;overflow:hidden;margin:0 auto;box-shadow:0 0 3px #AAAAAA;border-radius: 0 0 4px 4px;border:1px solid white;background:url(img/panel.jpg) repeat-x bottom center #ffffff; }
+#gallery {width: 920px;overflow:hidden;margin:0 auto;box-shadow:0 0 3px #AAAAAA;border-radius: 0 0 4px 4px;border:1px solid white;z-index: 0}
+#slides { width:920px; height:400px; display: flex; align-items: flex-start; transform: translateX(0); transition: all 1s;}
 
-#slides { width:920px; height:400px; display: flex; align-items: flex-start; transform: translateX(0); transition: all 1s; }
 
-main .menu { height: 45px; width: 100%; display: flex; justify-content: center;}
-main .menu button { background:url(img/divider.png) no-repeat right; width:60px; display:inline-block; height: 45px; overflow:hidden;}
+.roundShadow { position: absolute; top : -5px; width: 920px; height: 2px; border-radius: 50%; box-shadow: 0 3px 4px 1px #e0e0e0; z-index: 0;}
+.lineShadow { position: absolute; top: 0; left: 0; width: 920px; height: 0; border-bottom: 1px solid #e0e0e0}
+
+main .menu { position: relative; height: 45px; width: 100%; display: flex; justify-content: center;background: linear-gradient(#ffffff, #ececec); overflow: hidden;}
+
+main .menu button {width:60px; display:inline-block; height: 45px; overflow:hidden;
+ box-shadow: inset -1px 0 #fefefe, inset -2px 0 #dddddd;background: transparent;
+ z-index: 1;
+ position:relative;
+}
 main .menu button.fbar {width: 2px;}
-main .menu button.active {background: url(img/active_bg.png) no-repeat;}
-main .menu button.inactive:hover {
-  background:url(img/divider.png) no-repeat right, url(img/pic_bg.png) repeat;
+main .menu button.menuItem.active {background: radial-gradient(farthest-corner,#f0f0f0, #bbbbbb);}
+main .menu button.menuItem.inactive:hover {box-shadow: inset -1px 0 #fefefe, inset -2px 0 #dddddd;background: rgba(245, 245, 245, 0.5);}
+
+main .menu button.menuItem.active::after {
+  content: "";
+  position:absolute;
+  left:50%;
+  transform: translateX(-50%);
+  top: -2px;
+  border: 7px solid transparent;
+  border-top-color: #ffffff;
+  z-index: 2999;
 }
 
 footer p { padding:10px; text-align:center;}
