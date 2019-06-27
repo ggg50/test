@@ -1,3 +1,5 @@
+// 需要先安装 ecstatic `npm install ecstatic` 才能正常使用.
+
 let {createServer} = require("http");
 let fs = require("fs");
 let url = require("url");
