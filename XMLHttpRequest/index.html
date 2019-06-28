@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>ajaxTest</title>
+  </head>
+  <body>
+    <p id="a">a</p>
+    <p id="b">b</p>
+    <p id="c">c</p>
+    <p id="d">d</p>
+
+    <script>
+
+      $("p").each(function(index){
+        console.log($(this).text());
+        $(this).on("click", (e) => {
+          let $dom = $(e.currentTarget);
+
+          let request = new XMLHttpRequest();
+          request.open("GET", "/xxx");
+          request.send();
+
+          request.onreadystatechange = ()=>{
+            if(4 === request.readyState) {
+              if(request.status >= 200 && request.status <= 300) {
+                let data = JSON.parse(request.responseText);
+                $dom.text(data[$dom.text()]);
+              }
+            } else if (request.status >= 400) {
+              console.log("fail");
+            }
+          };
+        })
+      })
+    </script>
+  </body>
+</html>
