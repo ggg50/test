@@ -1,1 +1,125 @@
-nothing
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"></script>
+    <title>欢迎</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            box-sizing: border-box;
+            min-height: 100vh;
+            background-color: #900000;
+        }
+        .section {
+            border: none;
+            position: relative;
+        }
+        .page1 {
+            background: url("./a.png") no-repeat center center / cover
+        }
+        .page2 {
+            background: url("./b.png") no-repeat center center / cover
+        }
+
+        .arrowUp {
+            width: 1.7em; height: 1.7em;
+            vertical-align: -0.15em;
+            fill: #ffffff;
+            overflow: hidden;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            animation: up 1.5s infinite;
+        }
+
+        @keyframes up {
+            0% {
+                transform: translate(-50%, -0%);
+                opacity: 0;
+            }
+            20% {
+                transform: translate(-50%, -0%);
+                opacity: 0;
+            }
+            90% {
+                transform: translate(-50%, -100%);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate(-50%, -100%);
+                opacity: 0.9;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="fullpage">
+        <div class="section page1">
+            <svg class="icon arrowUp" aria-hidden="true">
+                <use xlink:href="#icon-arrowUp"></use>
+            </svg>
+        </div>
+        <div class="section page2">
+            <svg class="icon arrowUp" aria-hidden="true">
+                <use xlink:href="#icon-arrowUp"></use>
+            </svg>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            document.body.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+            }, {passive: false})
+
+
+            $('#fullpage').fullpage({
+                css3: true,//是否使用CSS3 transforms来实现滚动效果，默认为true
+                scrollingSpeed: 700,//设置滚动速度，单位毫秒，默认700
+                autoScrolling: true,//是否使用插件的滚动方式，默认为true,若为false则会出现浏览器自带滚动条
+                fitToSection: true,//设置是否自适应整个窗口的空间，默认值：true
+                scrollBar: false,//是否包含滚动条，默认为false,若为true浏览器自带滚动条出现
+                easing: 'easeInOutCubic',//定义页面section滚动的动画方式，若修改此项需引入jquery.easing插件
+                easingcss3: 'ease',//定义页面section滚动的过渡效果，若修改此项需引入第三方插件
+                continuousVertical: false,//是否循环滚动，不兼容loopTop和loopBottom选项
+                normalScrollElements: '#element1, .element2',//避免自动滚动，滚动时的一些元素，例如百度地图
+                scrollOverflow: false,
+                touchSensitivity: 15,
+                normalScrollElementTouchThreshold: 5,
+            });
+        });
+        // function enroll() {
+        //     location.href = '<?=BASE_URL?>/h5/register';
+        // };
+        let startPositionY
+        let endPositionY
+
+        $('.page2').on('touchstart',function(e) {
+            startPositionY = e.originalEvent.targetTouches[0].pageY; 
+        });
+
+        $('.page2').on('touchend',function(e) {
+            endPositionY = e.originalEvent.changedTouches[0].pageY
+            checkForSwitch(startPositionY, endPositionY)
+        });
+
+
+        function checkForSwitch(start, end){
+            if (end - start < -100) {
+                location.href = 'https://v.inmuu.com/microsite/website/13'
+            }
+        }
+
+    </script>
+</body>
+
+</html>
